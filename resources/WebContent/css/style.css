@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+
+input#searchBox {
+    width: 400px;
+}
+
+.tag {
+    font-size: 1em;
+}

@@ -18,13 +18,21 @@ public class Label {
 	
 	private Label() {}
 	
-	
+	public static Label newInstance(String name)
+	{
+		Label newInstance = new Label();
+		newInstance.name = name;
+		
+		// TODO: save into MODEL, persistence
+		
+		return newInstance;
+	}
 	
 	
 	/** for mock data */
 	public static HashMap<String, Label> tableLabels = new HashMap<String, Label>();
 	
-	public Label findByName(String name)
+	public static Label findByName(String name)
 	{
 		return tableLabels.get(name);
 	}
