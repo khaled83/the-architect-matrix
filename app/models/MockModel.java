@@ -3,13 +3,9 @@ package models;
 import java.util.List;
 import java.util.Arrays;
 
-import play.data.Form;
-
-public class TestDataGenerator {
+public class MockModel {
 	
 	public static List<Item> items;
-	
-	Form<?> form;
 	
 	static
 	{
@@ -22,6 +18,11 @@ public class TestDataGenerator {
 							
 		};
 		items = Arrays.asList( itemsArray );
+	}
+	
+	public static Item addItem(String name, String category)
+	{
+		return Item.newInstance(name, category);
 	}
 
 }

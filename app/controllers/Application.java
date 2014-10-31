@@ -14,5 +14,5 @@ public class Application extends Controller {
     public static Result matrix() {
         return ok(matrix.render(null) );
     }
-
+    
 }
