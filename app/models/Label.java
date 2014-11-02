@@ -22,7 +22,7 @@ public class Label {
 	{
 		Label newInstance = new Label();
 		newInstance.name = name;
-		
+		tableLabels.put(name, newInstance);
 		// TODO: save into MODEL, persistence
 		
 		return newInstance;

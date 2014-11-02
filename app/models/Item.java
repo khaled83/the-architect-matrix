@@ -52,6 +52,7 @@ public class Item {
 	@SuppressWarnings("unchecked")
 	public static Item newInstance(String name, String category, Collection<? extends Object> labels)
 	{
+		System.out.println("*** newInstance(3 params)");
 		Item newInstance = Item.newInstance(name, category);
 		
 		if(labels.iterator().next() instanceof Label)

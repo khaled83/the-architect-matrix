@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /matrix/                    controllers.Application.matrix()
+GET    /items/new					controllers.Items.newItem(name:String)
 
 # Play In Action
 GET		/products/					controllers.Products.list()

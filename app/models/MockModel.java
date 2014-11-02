@@ -22,7 +22,9 @@ public class MockModel {
 	
 	public static Item addItem(String name, String category)
 	{
-		return Item.newInstance(name, category);
+		Item newItem = Item.newInstance(name, category);
+		items.add(newItem);
+		return newItem;
 	}
 
 }
