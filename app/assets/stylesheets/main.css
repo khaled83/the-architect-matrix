@@ -21,3 +21,13 @@ header h1 small {
     text-transform: uppercase;
     font-size: 0.4em;
 }
+
+
+
+label#errMsg {
+    color: red;
+}
+
+label#msg {
+    color: green;
+}

@@ -11,11 +11,13 @@ public class Application extends Controller {
     }
     
     public static Result matrix() {
+    	System.out.println(System.currentTimeMillis() + " >> matrix default renderer");
         return ok(matrix.render(null) );
     }
     
     public static Result newProduct() {
-		return ok(matrix.render(null));
+    	System.out.println( System.currentTimeMillis() + " >> returning render with messages...");
+		return ok(searchbox.render());
 	}
     
 }

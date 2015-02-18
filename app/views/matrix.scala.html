@@ -1,22 +1,10 @@
-@(products: List[Product]) 
+@(products: List[Product])
 
 @main("Products catalogue") {
 
 <div class="row">
  <div class="col-xs-12">
-     <form class="form" role="form">
-         <div class="form-group">
-             <label for="searchBox">What are you looking for? </label>
-             <input type="text" id="searchBox" class="form-control" placeholder="e.g. Programming Language, Java, JVM Web Frameworks" />
-             <label id="msg"></label>
-         </div>
-         <div class="form-group">
-             <label>(Zoom in+ out- with labels)</label><br>
-             <a class="label label-default tag">Java</a>
-             <a class="label label-default tag">Web</a>
-             <a class="label label-default tag">Framework</a>
-         </div>
-     </form>
+     @searchbox()
  </div>
 </div>
 <div class="row">
