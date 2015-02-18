@@ -16,16 +16,16 @@ function bindSearchBox() {
         if (e.which === 13) {
             $.ajax({
                 type: "GET",
-                url: "/products/new"//,
+                url: "/products/new",
 //                dataType: "text",
-//                success: function (msg) {
-//                    alert("Success: " + msg);
-//                    $("label#msg").html("Success: " + msg);
-//                },
-//                error: function (jqXHR, textStatus, errorThrown) {
-//                    alert("Fail: " + jqXHR + " : " + textStatus + " : " + errorThrown);
-//                    $("label#msg").html("Fail: " + msg);
-//                }
+                success: function (msg) {
+                    alert("Success: " + msg);
+                    $("label#msg").html("Success: " + msg);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Fail: " + jqXHR + " : " + textStatus + " : " + errorThrown);
+                    $("label#msg").html("Fail: " + msg);
+                }
             });
         }
     });
