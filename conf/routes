@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET     /matrix/                    controllers.Application.matrix()
 GET		/products/new				controllers.Application.newProduct()
+#GET    /items/new					controllers.Items.newItem(name:String)
 
 # Play In Action
 GET		/products/					controllers.Products.list()
