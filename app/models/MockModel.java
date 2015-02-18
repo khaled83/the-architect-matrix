@@ -5,24 +5,24 @@ import java.util.Arrays;
 
 public class MockModel {
 	
-	public static List<Item> items;
+	public static List<Product> items;
 	
 	static
 	{
 		String[] labelsArray = { "Programming Language", "Web", "Full Stack" };
-		Item[] itemsArray = { 
-			Item.newInstance("Spring", "JVM Web Framework", Arrays.asList(labelsArray) ),
-			Item.newInstance("Grails", "JVM Web Framework", Arrays.asList(labelsArray) ),
-			Item.newInstance("Play!", "JVM Web Framework", Arrays.asList(labelsArray) ),
-			Item.newInstance("GWT", "JVM Web Framework", Arrays.asList(labelsArray) ),
+		Product[] itemsArray = { 
+			Product.newInstance("Spring", "JVM Web Framework", Arrays.asList(labelsArray) ),
+			Product.newInstance("Grails", "JVM Web Framework", Arrays.asList(labelsArray) ),
+			Product.newInstance("Play!", "JVM Web Framework", Arrays.asList(labelsArray) ),
+			Product.newInstance("GWT", "JVM Web Framework", Arrays.asList(labelsArray) ),
 							
 		};
 		items = Arrays.asList( itemsArray );
 	}
 	
-	public static Item addItem(String name, String category)
+	public static Product addItem(String name, String category)
 	{
-		return Item.newInstance(name, category);
+		return Product.newInstance(name, category);
 	}
 
 }

@@ -7,7 +7,7 @@ public class Items extends Controller {
 	
 	public static Result add()
 	{
-		
+		return null;
 	}
 
 }

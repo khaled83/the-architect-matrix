@@ -2,7 +2,6 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -14,5 +13,9 @@ public class Application extends Controller {
     public static Result matrix() {
         return ok(matrix.render(null) );
     }
+    
+    public static Result newProduct() {
+		return ok(matrix.render(null));
+	}
     
 }

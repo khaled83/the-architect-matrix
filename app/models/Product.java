@@ -1,76 +1,88 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Set;
 
+/**
+ * Represents a programming language, framework, application server, etc.<br><br>
+ * To create instances use factory method {@link Product#newInstance(String, String)}.
+ * 
+ * @author Khaled Abbas
+ *
+ */
 public class Product {
-
-	public String ean;
+	
+	long id;
+	
+	/** e.g Java */
 	public String name;
-	public String description;
-
-	public Product() {
+	
+	/** e.g. Programming Language */
+	public String category;
+	
+	/** e.g. [Programming Language, Web] */
+	public Set<Label> labels;
+	
+	/** use factory method {@link Product#newInstance(String, String)} */
+	private Product() {}
+	
+	/**
+	 * Factory method to create a new {@link Product} initially without labels.
+	 * 
+	 * @param name	e.g. Java
+	 * @param category	e.g. Programming Language
+	 * @return	a new instance of {@link Product}
+	 */
+	public static Product newInstance(String name, String category)	
+	{
+		Product newInstance = new Product();
+		newInstance.name = name;
+		newInstance.category = category;
+		return newInstance;
 	}
-
-	public Product(String ean, String name, String description) {
-		this.ean = ean;
-		this.name = name;
-		this.description = description;
+	
+	/**
+	 * Factory method to create a new {@link Product} with labels.
+	 * 
+	 * @param name	e.g. Java
+	 * @param category	e.g. Programming Language
+	 * @param labels	a collection of {@link Label} instances or Label {@link String }names, e.g. { Programming Language, Web }
+	 * @return	a new instance of {@link Product}
+	 */
+	@SuppressWarnings("unchecked")
+	public static Product newInstance(String name, String category, Collection<? extends Object> labels)
+	{
+		Product newInstance = Product.newInstance(name, category);
+		
+		if(labels.iterator().next() instanceof Label)
+			newInstance.labels.addAll( (Collection<Label>)(Collection<?>) labels);
+		else if(labels.iterator().next() instanceof String)
+			newInstance.addLabelNames( (Collection<String>)(Collection<?>) labels);
+		
+		return newInstance;
 	}
-
+	
+	/**
+	 * Finds {@link Label} instances in model that match argument label names and adds them to {@link Product}.<br><br>
+	 * Labels that are not found will be created and saved into the model.
+	 * 
+	 * @param labelNames	A collection of {@link String}s that identify the names of {@link Label}s.
+	 */
+	public void addLabelNames(Collection<String> labelNames)
+	{
+		for(String labelName : labelNames)
+		{
+			Label label = Label.findByName(labelName);
+			if(label == null)
+				label = Label.newInstance(labelName);
+			
+			labels.add( label );
+		}
+	}
+	
+	@Override
 	public String toString() {
-		return String.format("%s - %s", ean, name);
-	}
-
-	// mock data
-	private static List<Product> products;
-
-	static {
-		products = new ArrayList<Product>();
-		products.add(new Product("1111111111111", "Paperclips 1",
-				"Paperclips description 1"));
-		products.add(new Product("2222222222222", "Paperclips 2",
-				"Paperclips description "));
-		products.add(new Product("3333333333333", "Paperclips 3",
-				"Paperclips description 3"));
-		products.add(new Product("4444444444444", "Paperclips 4",
-				"Paperclips description 4"));
-		products.add(new Product("5555555555555", "Paperclips 5",
-				"Paperclips description 5"));
-	}
-
-	// mock methods for testing
-	public static List<Product> findAll() {
-		return new ArrayList<Product>(products);
-	}
-
-	public static Product findByEan(String ean) {
-		for (Product candidate : products) {
-			if (candidate.ean.equals(ean)) {
-				return candidate;
-			}
-		}
-		return null;
-	}
-
-	public static List<Product> findByName(String term) {
-		final List<Product> results = new ArrayList<Product>();
-		for (Product candidate : products) {
-			if (candidate.name.toLowerCase().contains(term.toLowerCase())) {
-				results.add(candidate);
-			}
-		}
-
-		return results;
-	}
-
-	public static boolean remove(Product product) {
-		return products.remove(product);
-	}
-
-	public void save() {
-		products.remove(findByEan(this.ean));
-		products.add(this);
+		return name + " is a " + category + " with the following labels: " + labels.toString();
 	}
 
 }

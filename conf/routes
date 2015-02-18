@@ -5,10 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /matrix/                    controllers.Application.matrix()
+GET		/products/new				controllers.Application.newProduct()
 
 # Play In Action
 GET		/products/					controllers.Products.list()
-GET		/products/new				controllers.Products.newProduct()
+#GET		/products/new				controllers.Products.newProduct()
 GET		/products/:ean				controllers.Products.details(ean:String)
 POST	/products/					controllers.Products.save()
 
